@@ -1,0 +1,23 @@
+[OK] molecules analysed: 10833 (paper: 10833)
+
+Molar refractivity, single-descriptor models
+  CDZ     R2 = 0.7918  Q2_LOO = 0.7917  OK
+  Randic  R2 = 0.9690  Q2_LOO = 0.9690  OK
+  ABC     R2 = 0.9611  Q2_LOO = 0.9611  OK
+  HAC     R2 = 0.9673  Q2_LOO = 0.9673  OK
+
+  CDZ -> CDZ + Randic:    R2 0.7918 -> 0.9690  (F = 62011)
+  Randic -> Randic + CDZ: R2 0.9690 -> 0.9690  (F = 4.98, p = 0.026)  OK
+
+  Controlling for heavy-atom count: partial R2 of MR on CDZ = 0.008, on Randic = 0.054
+  Within strata of equal heavy-atom count (strata with at least 100 molecules):
+  Randic explains more MR variance than CDZ in 19 of 28 strata  OK
+
+pIC50 (n = 10833), single-descriptor models
+  CDZ     Q2_LOO = 0.0459
+  Randic  Q2_LOO = 0.0689
+  ABC     Q2_LOO = 0.0724
+  HAC     Q2_LOO = 0.0691
+  [OK] largest Q2 = 0.0724 <= 0.073
+
+ALL CHECKS PASSED

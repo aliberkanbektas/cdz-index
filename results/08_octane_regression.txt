@@ -1,0 +1,11 @@
+Structure check: 18 isomers, all valid and distinct.  OK
+
+Linear regression models for CDZ(G) against octane properties,
+with the standard error of the estimate (SEE).
+
+  AcenFac   = 0.03271 * CDZ(G) + 0.18761,   SEE = 0.02811
+  DHvap     = 0.39691 * CDZ(G) + 7.32841,   SEE = 0.27522
+  Entropy   = 3.35099 * CDZ(G) + 90.23418,   SEE = 3.99448
+  Hvap      = 2.01346 * CDZ(G) + 60.04287,   SEE = 1.51472
+  BoilingP  = 5.92305 * CDZ(G) + 360.03560,   SEE = 4.68163
+  Enthalpy  = 3.79540 * CDZ(G) - 233.91167,   SEE = 4.61273

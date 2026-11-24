@@ -1,0 +1,20 @@
+Parser validation
+  [OK] max |CDZ - RDKit-based CDZ|: large IC50 6.4e-14 (10833 molecules), E. coli 1.8e-13 (1082 molecules)
+
+dataset    property            n    size   pR2 (Z)  pR2 (Z=6)   F (CDZ)         p
+---------------------------------------------------------------------------------
+HER2       LogP             2589     HAC     0.141      0.025     424.5   1.9e-87  OK
+large IC50 LogP            10833      MW     0.097      0.000    1164.5  1.7e-242  OK
+E. coli    LogP             1082     HAC     0.287      0.123     434.6   2.2e-81  OK
+HER2       TPSA             2589     HAC     0.194      0.095     621.8  3.6e-123  OK
+E. coli    TPSA             1082     HAC     0.355      0.162     593.7  7.8e-105  OK
+ESOL       log S            1128      MW     0.137      0.040     178.3   7.2e-38  OK
+Lipo       LogD             4200     HAC     0.019      0.012      82.7   1.4e-19  OK
+large IC50 MR              10833      MW     0.271      0.319    4028.7   0.0e+00  OK
+E. coli    MolarVolume      1082     HAC     0.217      0.292     298.4   3.3e-59  OK
+
+The first seven rows are polarity-related; in each the true atomic numbers explain
+more size-adjusted variance than the homogeneous control. The last two rows (molar
+refractivity, molar volume) reverse that order.
+
+ALL CHECKS PASSED
