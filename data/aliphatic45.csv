@@ -1,0 +1,46 @@
+name,class,smiles,bp_C
+methanol,alcohol,CO,64.7
+ethanol,alcohol,CCO,78.4
+1-propanol,alcohol,CCCO,97.2
+2-propanol,alcohol,CC(C)O,82.4
+1-butanol,alcohol,CCCCO,117.7
+2-butanol,alcohol,CC(O)CC,99.5
+2-methyl-1-propanol,alcohol,CC(C)CO,107.9
+2-methyl-2-propanol,alcohol,CC(C)(C)O,82.2
+1-pentanol,alcohol,CCCCCO,138.0
+2-pentanol,alcohol,CC(O)CCC,119.3
+3-pentanol,alcohol,CCC(O)CC,115.3
+2-methyl-1-butanol,alcohol,CCC(C)CO,128.7
+3-methyl-1-butanol,alcohol,CC(C)CCO,131.2
+2-methyl-2-butanol,alcohol,CCC(C)(C)O,102.0
+3-methyl-2-butanol,alcohol,CC(O)C(C)C,111.5
+"2,2-dimethyl-1-propanol",alcohol,CC(C)(C)CO,113.1
+1-hexanol,alcohol,CCCCCCO,157.0
+1-heptanol,alcohol,CCCCCCCO,176.3
+1-octanol,alcohol,CCCCCCCCO,195.2
+dimethyl ether,ether,COC,-24.8
+methyl ethyl ether,ether,COCC,7.4
+diethyl ether,ether,CCOCC,34.6
+methyl propyl ether,ether,COCCC,38.8
+methyl isopropyl ether,ether,COC(C)C,32.5
+ethyl propyl ether,ether,CCOCCC,63.6
+diisopropyl ether,ether,CC(C)OC(C)C,68.5
+dipropyl ether,ether,CCCOCCC,90.1
+methyl tert-butyl ether,ether,COC(C)(C)C,55.2
+dibutyl ether,ether,CCCCOCCCC,142.0
+tetrahydrofuran,ether,C1CCOC1,66.0
+methylamine,amine,CN,-6.3
+ethylamine,amine,CCN,16.6
+propylamine,amine,CCCN,47.8
+isopropylamine,amine,CC(C)N,31.7
+butylamine,amine,CCCCN,77.8
+isobutylamine,amine,CC(C)CN,67.8
+sec-butylamine,amine,CC(N)CC,63.0
+tert-butylamine,amine,CC(C)(C)N,44.0
+pentylamine,amine,CCCCCN,104.0
+hexylamine,amine,CCCCCCN,132.0
+dimethylamine,amine,CNC,7.4
+diethylamine,amine,CCNCC,55.5
+dipropylamine,amine,CCCNCCC,109.3
+trimethylamine,amine,CN(C)C,2.9
+triethylamine,amine,CCN(CC)CC,89.3

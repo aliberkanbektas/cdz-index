@@ -1,0 +1,7 @@
+H_12: 12 vertices, edge types {(1, 2): 4, (2, 2): 1, (2, 3): 6}
+  [OK] CDZ(H_12) = 6.27792 = 1 + sqrt6 + 2 sqrt2
+  [OK] none of the 211 non-isomorphic relocations has smaller CDZ (smallest 6.27792)
+  [OK] equal-valued neighbours up to isomorphism: 1; from it one relocation reaches 5.59575 < 6.27792
+  [OK] minimum over the 355 chemical trees on 12 vertices is 5.0981 < 6.2779
+
+ALL CHECKS PASSED

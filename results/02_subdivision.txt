@@ -1,0 +1,36 @@
+Lemma 3.17  CDZ(T_xy) = CDZ(T) + sigma(d_x, d_y)
+  [OK] 6676 (tree, edge) pairs with n <= 12, 0 failures
+
+Equation (2): subdivision costs
+  [OK] sigma(1, 3) = +0.53800
+  [OK] sigma(1, 4) = +0.91421
+  [OK] sigma(3, 3) = -0.18350
+  [OK] sigma(3, 4) = +0.82668
+  [OK] sigma(4, 4) = +0.41421
+  [OK] negative costs among degrees {1,3,4}: [(3, 3)]
+
+Section 3.5.1: (3,4)-tree family reproduces Table 1
+  [OK] reproduced orders [4, 5, 7, 9, 10, 12, 13, 14, 15, 17]
+
+Proposition 3.18: the three trees with internal degrees 4,3,2
+  [OK] CDZ(T*_7) = 3/2 + 5*sqrt3/6 = 2.94338
+  [OK] exactly three trees: [3.48138, 3.77006, 3.85759]
+  [OK] they are the subdivisions of T*_7 at (1,3), (3,4), (1,4)
+  [OK] 432 = 3/2+sqrt3/2+sqrt2/2+sqrt6/6 = 3.48138
+  [OK] 423 = 3/2+2sqrt3/3+sqrt2/2+sqrt6/6 = 3.77006
+  [OK] 342 = 1+5sqrt3/6+sqrt2 = 3.85759
+  [OK] 423 - 432 = 1/(2 sqrt3) = w(3,4)
+  [OK] 432 is the global minimiser on 8 vertices
+
+Remark 3.19
+  [OK] mu_8  = mu_7  + sigma(1,3)
+  [OK] mu_11 = mu_10 + sigma(1,3)
+  [OK] mu_6  = sqrt3 + 2 sigma(1,3) = 2.80806
+  [OK] mu_15 = 4 + 4/sqrt3 = 6.30940
+  [OK] mu_16 = 9/2 + 5sqrt3/6 + sqrt6/3 = 6.75987
+  [OK] 15-vertex tree with a (3,3) edge: 11/2 + 5sqrt3/6 = 6.94338
+  [OK] its subdivision gives mu_16
+  [OK] premium (3-sqrt3)/2 = 0.63397
+  [OK] mu_15 + sigma(1,3) = 6.84741 > mu_16; margin 0.08753
+
+ALL CHECKS PASSED

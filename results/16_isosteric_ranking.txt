@@ -1,0 +1,12 @@
+[OK] molecular formula: max |MW - ESOL molecular weight| = 0.008 over 1128 molecules
+
+dataset        pairs          n   correct          p
+----------------------------------------------------
+ESOL           all         2124     42.8%    3.4e-11  OK
+ESOL           formula       50     54.0%       0.67  OK
+ESOL           heavy         81     56.8%       0.27  OK
+Lipophilicity  all         1073     55.7%    0.00019  OK
+Lipophilicity  formula       82     52.4%       0.74  OK
+Lipophilicity  heavy         89     53.9%       0.53  OK
+
+ALL CHECKS PASSED

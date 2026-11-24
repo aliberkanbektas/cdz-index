@@ -1,0 +1,24 @@
+  n   chem  with (3,3)/(4,4)  leaf move  five configs
+  5      3                 0          0             0
+  6      5                 1          1             1
+  7      9                 1          1             1
+  8     18                 5          5             4
+  9     35                 9          9             8
+ 10     75                27         27            26
+ 11    159                62         62            57
+ 12    355               164        164           155
+ 13    802               400        400           384
+ 14   1858              1028       1028           981
+ 15   4347              2569       2569          2480
+ 16  10359              6552       6552          6348
+-----------------------------------------------------
+all                    10818      10818         10445
+
+first configuration found, by case: {1: 7969, 2: 649, 3: 1645, 4: 167, 5: 15}
+
+  [OK] trees with a (3,3) or (4,4) edge: 10818 (paper: 10818)
+  [OK] an improving leaf relocation exists in every one
+  [OK] Proposition 3.20(b): all 8903 trees with a (3,3) edge contain a configuration with negative change; the 373 that do not all have only (4,4) equal-degree edges (paper: 373)
+  [OK] smallest best improvement = 0.03626 = 3/2 + sqrt6/3 - sqrt2 - sqrt3/2; the guaranteed margin of Case 2 is 0.03935
+
+ALL CHECKS PASSED

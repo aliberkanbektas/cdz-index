@@ -1,0 +1,25 @@
+self-check: ethanol vs dimethyl ether
+   CDZ:     1.1154 vs 0.4082   -> distinguished
+   R, GA, ABC, SO, M2, SDD, CDZ_hom: identical values -> not distinguished
+   OK
+
+alphabet: C(6), N(7), O(8)
+
+  n  #structures         CDZ   CDZ_hom         R        GA       ABC        SO        M2       SDD
+------------------------------------------------------------------------------------------------
+  4           75     0.09333   0.97333   0.97333   0.97333   0.97333   0.97333   0.97333   0.97333
+  5          342     0.17251   0.99123   0.99123   0.99123   0.99123   0.99123   0.99123   0.99123
+  6         1773     0.24760   0.99662   0.99662   0.99662   0.99662   0.99662   0.99662   0.99662
+  7         9894     0.34728   0.99889   0.99889   0.99889   0.99899   0.99889   0.99909   0.99889
+
+fraction of structures DISTINGUISHED (1 - D), as reported in the paper:
+
+  n  #structures       CDZ   classical   ratio
+----------------------------------------------
+  4           75     90.7%        2.7%     34x
+  5          342     82.7%        0.9%     94x
+  6         1773     75.2%        0.3%    222x
+  7         9894     65.3%        0.1%    587x
+
+Note: CDZ_hom (column 2) matches the classical indices exactly,
+confirming the advantage comes from the atomic-number weighting alone.
