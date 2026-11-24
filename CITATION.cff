@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the paper and this software."
+title: "CDZ index: code and data"
+type: software
+authors:
+  - family-names: "Bektaş"
+    given-names: "Ali Berkan"
+    affiliation: "Department of Mathematics, Bursa Uludağ University"
+    orcid: "https://orcid.org/0009-0003-9305-5587"
+  - family-names: "Cangül"
+    given-names: "İsmail Naci"
+    affiliation: "Department of Mathematics, Bursa Uludağ University"
+  - family-names: "Kara Şen"
+    given-names: "Yeliz"
+    affiliation: "Department of Mathematics, Bursa Uludağ University"
+license: MIT
+doi: "10.5281/zenodo.24505775"
+version: "1.0.0"
+date-released: "2026-11-24"
+preferred-citation:
+  type: article
+  title: "The Degree–Atomic Number Commensurability Index: Theory, Extremal Results and Chemical Applicability"
+  authors:
+    - family-names: "Bektaş"
+      given-names: "Ali Berkan"
+      orcid: "https://orcid.org/0009-0003-9305-5587"
+    - family-names: "Cangül"
+      given-names: "İsmail Naci"
+    - family-names: "Kara Şen"
+      given-names: "Yeliz"

@@ -1,0 +1,28 @@
+{
+  "title": "CDZ index: code and data",
+  "upload_type": "software",
+  "description": "Scripts and data reproducing every computation in A. B. Bektaş, İ. N. Cangül and Y. Kara Şen, 'The Degree–Atomic Number Commensurability Index: Theory, Extremal Results and Chemical Applicability'.",
+  "creators": [
+    {
+      "name": "Bektaş, Ali Berkan",
+      "affiliation": "Bursa Uludağ University",
+      "orcid": "0009-0003-9305-5587"
+    },
+    {
+      "name": "Cangül, İsmail Naci",
+      "affiliation": "Bursa Uludağ University"
+    },
+    {
+      "name": "Kara Şen, Yeliz",
+      "affiliation": "Bursa Uludağ University"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "topological index",
+    "chemical graph theory",
+    "QSPR",
+    "extremal graph theory",
+    "greatest common divisor"
+  ]
+}
