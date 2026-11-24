@@ -1,0 +1,46 @@
+name	cas	nist_Tboil_K	nist_unc_K	url
+methanol	67-56-1	337.8	0.3	https://webbook.nist.gov/cgi/cbook.cgi?ID=C67561&Mask=4
+ethanol	64-17-5	351.5	0.2	https://webbook.nist.gov/cgi/cbook.cgi?ID=C64175&Mask=4
+1-propanol	71-23-8	370.3	0.5	https://webbook.nist.gov/cgi/cbook.cgi?ID=C71238&Mask=C
+2-propanol	67-63-0	355.5	0.4	https://webbook.nist.gov/cgi/cbook.cgi?ID=C67630&Mask=7
+2-butanol	78-92-2	372.	1.	https://webbook.nist.gov/cgi/cbook.cgi?ID=C78922&Mask=4
+2-methyl-1-propanol	78-83-1	380.8	0.9	https://webbook.nist.gov/cgi/cbook.cgi?ID=C78831&Mask=4
+2-methyl-2-propanol	75-65-0	355.5	0.7	https://webbook.nist.gov/cgi/cbook.cgi?ID=C75650&Mask=4
+1-pentanol	71-41-0	411.	1.	https://webbook.nist.gov/cgi/cbook.cgi?ID=C71410&Mask=4
+2-methyl-1-butanol	137-32-6	402.	2.	https://webbook.nist.gov/cgi/cbook.cgi?ID=C137326&Mask=4
+2-methyl-2-butanol	75-85-4	375.1	0.9	https://webbook.nist.gov/cgi/cbook.cgi?ID=C75854&Mask=E
+1-hexanol	111-27-3	430.	2.	https://webbook.nist.gov/cgi/cbook.cgi?ID=C111273&Mask=4
+1-heptanol	111-70-6	448.	2.	https://webbook.nist.gov/cgi/cbook.cgi?ID=C111706&Mask=F
+1-octanol	111-87-5	468.	1.	https://webbook.nist.gov/cgi/cbook.cgi?ID=C111875&Mask=C
+diethyl ether	60-29-7	307.7	0.4	https://webbook.nist.gov/cgi/cbook.cgi?ID=C60297&Mask=4
+diisopropyl ether	108-20-3	341.4	0.7	https://webbook.nist.gov/cgi/cbook.cgi?ID=C108203&Mask=F
+dipropyl ether	111-43-3	363.	1.	https://webbook.nist.gov/cgi/cbook.cgi?ID=C111433&Mask=E
+dibutyl ether	142-96-1	415.	1.	https://webbook.nist.gov/cgi/cbook.cgi?ID=C142961&Mask=F
+tetrahydrofuran	109-99-9	339.	1.	https://webbook.nist.gov/cgi/cbook.cgi?ID=C109999&Mask=4
+methyl isopropyl ether	598-53-8	303.9		https://webbook.nist.gov/cgi/cbook.cgi?ID=C598538&Mask=4
+methylamine	74-89-5	266.8	0.3	https://webbook.nist.gov/cgi/cbook.cgi?ID=C74895&Mask=4
+ethylamine	75-04-7	291.	2.	https://webbook.nist.gov/cgi/cbook.cgi?ID=C75047&Mask=4
+isopropylamine	75-31-0	306.	2.	https://webbook.nist.gov/cgi/cbook.cgi?ID=C75310&Mask=4
+butylamine	109-73-9	351.	1.	https://webbook.nist.gov/cgi/cbook.cgi?ID=C109739&Mask=C
+isobutylamine	78-81-9	341.	1.	https://webbook.nist.gov/cgi/cbook.cgi?ID=C78819&Mask=4
+tert-butylamine	75-64-9	318.	2.	https://webbook.nist.gov/cgi/cbook.cgi?ID=C75649&Mask=4
+diethylamine	109-89-7	328.7	0.8	https://webbook.nist.gov/cgi/cbook.cgi?ID=C109897&Mask=4
+dipropylamine	142-84-7	383.	2.	https://webbook.nist.gov/cgi/cbook.cgi?ID=C142847&Mask=4
+dimethylamine	124-40-3	281.	1.	https://webbook.nist.gov/cgi/cbook.cgi?ID=C124403&Mask=4
+trimethylamine	75-50-3	275.	5.	https://webbook.nist.gov/cgi/cbook.cgi?ID=C75503&Mask=F
+triethylamine	121-44-8	362.2	0.6	https://webbook.nist.gov/cgi/cbook.cgi?ID=C121448&Mask=4
+2,2-dimethyl-1-propanol	75-84-3	385.	3.	https://webbook.nist.gov/cgi/cbook.cgi?ID=C75843&Mask=F
+1-butanol	71-36-3	390.6	0.8	https://webbook.nist.gov/cgi/cbook.cgi?ID=C71363&Mask=4
+2-pentanol	6032-29-7	392.15	range 388.20-400.65 (42 WebBook values)	https://www.chemeo.com/cid/32-700-8/2-Pentanol.pdf
+3-pentanol	584-02-1	388.57	range 385.15-391.10 (36 WebBook values)	https://www.chemeo.com/cid/64-801-1/3-Pentanol.pdf
+3-methyl-1-butanol	123-51-3	404.50	range 401.15-406.00 (84 WebBook values)	https://www.chemeo.com/cid/37-074-9/1-Butanol-3-methyl.pdf
+3-methyl-2-butanol	598-75-4	385.20	range 381.15-388.15 (23 WebBook values)	https://www.chemeo.com/cid/57-060-2/2-Butanol-3-methyl.pdf
+dimethyl ether	115-10-6	248.38	range 248.20-249.50 (6 WebBook values)	https://www.chemeo.com/cid/52-349-7/Dimethyl-ether.pdf
+methyl ethyl ether	540-67-0	281.48	range 279.75-283.20 (2 WebBook values)	https://www.chemeo.com/cid/61-418-0/Ethane-methoxy.pdf
+methyl propyl ether	557-17-5	311.80	range 311.70-312.20 (3 WebBook values)	https://www.chemeo.com/cid/14-322-8/Methyl-propyl-ether.pdf
+ethyl propyl ether	628-32-0	336.40	range 336.30-336.80 (3 WebBook values)	https://www.chemeo.com/cid/48-734-4/Propane-1-ethoxy.pdf
+methyl tert-butyl ether	1634-04-4	328.21	range 328.00-328.40 (9 WebBook values)	https://www.chemeo.com/cid/50-231-9/Propane-2-methoxy-2-methyl.pdf
+propylamine	107-10-8	321.85	range 320.40-323.15 (19 WebBook values)	https://www.chemeo.com/cid/32-674-8/Propylamine.pdf
+sec-butylamine	13952-84-6	336.15	range 336.00-336.70 (5 WebBook values)	https://www.chemeo.com/cid/52-762-8/sec-Butylamine.pdf
+pentylamine	110-58-7	376.20	range 368.15-377.60 (13 WebBook values)	https://www.chemeo.com/cid/40-962-9/1-Pentanamine.pdf
+hexylamine	111-26-2	402.90	range 399.15-405.90 (11 WebBook values)	https://www.chemeo.com/cid/17-153-3/1-Hexanamine.pdf

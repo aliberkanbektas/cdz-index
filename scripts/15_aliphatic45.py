@@ -11,12 +11,15 @@ Reproduces
   * the partial F-tests of Table "partialF";
   * the isosteric triples discussed in the text.
 
-RMSE is sqrt(SS_res / n).  Data: data/aliphatic45.csv.
+RMSE is sqrt(SS_res / n).  Data: data/aliphatic45.csv; every boiling point
+is checked against the NIST Chemistry WebBook by 18_aliphatic45_vs_nist.py.
 
-Note on a correction.  An earlier encoding of this set represented
-2-methyl-1-butanol and 3-methyl-2-butanol by the graph of 3-methyl-1-butanol.
-The values below use the correct structures; set USE_EARLIER_ENCODING = True
-to reproduce the numbers of the earlier version exactly.
+Notes on two corrections.  An earlier encoding of this set represented
+2-methyl-1-butanol and 3-methyl-2-butanol by the graph of 3-methyl-1-butanol,
+and gave methyl isopropyl ether a boiling point of 32.5 C, outside the WebBook
+value of 303.9 K (30.75 C); the data file now has 30.8 C.  Set
+USE_EARLIER_ENCODING = True to reproduce the numbers of the earlier version
+exactly.
 """
 
 import csv
@@ -34,13 +37,13 @@ from cdz_core import cdz, parse_smiles  # noqa: E402
 
 USE_EARLIER_ENCODING = False
 
-EXPECTED = {   # corrected structures
-    "CDZ": (0.703, 0.678, 26.35), "Randic": (0.590, 0.547, 30.99),
-    "ABC": (0.516, 0.451, 33.68), "HAC": (0.584, 0.538, 31.19),
-    "ext": (0.673, 1.019, 0.910), "yrand": (0.022, 0.252),
-    "F": {"Randic -> Randic + CDZ": (16.36, 2.2e-4, 0.580, 0.691),
-          "ABC -> ABC + CDZ": (26.75, 6.1e-6, 0.504, 0.690),
-          "CDZ -> CDZ + Randic": (0.18, 0.67, 0.697, 0.691)},
+EXPECTED = {   # corrected structures and boiling points
+    "CDZ": (0.703, 0.678, 26.38), "Randic": (0.589, 0.546, 31.04),
+    "ABC": (0.515, 0.450, 33.73), "HAC": (0.584, 0.537, 31.24),
+    "ext": (0.673, 1.018, 0.910), "yrand": (0.022, 0.253),
+    "F": {"Randic -> Randic + CDZ": (16.42, 2.1e-4, 0.580, 0.691),
+          "ABC -> ABC + CDZ": (26.79, 6.0e-6, 0.504, 0.690),
+          "CDZ -> CDZ + Randic": (0.19, 0.67, 0.696, 0.691)},
 }
 if USE_EARLIER_ENCODING:
     EXPECTED = {
@@ -131,6 +134,7 @@ def main():
     if USE_EARLIER_ENCODING:
         for nm in ("2-methyl-1-butanol", "3-methyl-2-butanol"):
             graphs[names.index(nm)] = parse_smiles("CC(C)CCO")
+        bp[names.index("methyl isopropyl ether")] = 32.5
     X = {"CDZ": [cdz(G) for G in graphs], "Randic": [randic(G) for G in graphs],
          "ABC": [abc(G) for G in graphs], "HAC": [float(G.number_of_nodes()) for G in graphs]}
     ok = True

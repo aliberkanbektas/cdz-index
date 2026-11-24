@@ -1,0 +1,52 @@
+[OK] 45 compounds, every one with a WebBook entry
+
+compound                   used (C)  NIST (C)   diff  tolerance
+methanol                       64.7     64.65  +0.05  +/- 0.3 K  OK
+ethanol                        78.4     78.35  +0.05  +/- 0.2 K  OK
+1-propanol                     97.2     97.15  +0.05  +/- 0.5 K  OK
+2-propanol                     82.4     82.35  +0.05  +/- 0.4 K  OK
+1-butanol                     117.7    117.45  +0.25  +/- 0.8 K  OK
+2-butanol                      99.5     98.85  +0.65  +/- 1.0 K  OK
+2-methyl-1-propanol           107.9    107.65  +0.25  +/- 0.9 K  OK
+2-methyl-2-propanol            82.2     82.35  -0.15  +/- 0.7 K  OK
+1-pentanol                    138.0    137.85  +0.15  +/- 1.0 K  OK
+2-pentanol                    119.3    119.00  +0.30  WebBook range 115.05 to 127.50 C  OK
+3-pentanol                    115.3    115.42  -0.12  WebBook range 112.00 to 117.95 C  OK
+2-methyl-1-butanol            128.7    128.85  -0.15  +/- 2.0 K  OK
+3-methyl-1-butanol            131.2    131.35  -0.15  WebBook range 128.00 to 132.85 C  OK
+2-methyl-2-butanol            102.0    101.95  +0.05  +/- 0.9 K  OK
+3-methyl-2-butanol            111.5    112.05  -0.55  WebBook range 108.00 to 115.00 C  OK
+2,2-dimethyl-1-propanol       113.1    111.85  +1.25  +/- 3.0 K  OK
+1-hexanol                     157.0    156.85  +0.15  +/- 2.0 K  OK
+1-heptanol                    176.3    174.85  +1.45  +/- 2.0 K  OK
+1-octanol                     195.2    194.85  +0.35  +/- 1.0 K  OK
+dimethyl ether                -24.8    -24.77  -0.03  WebBook range -24.95 to -23.65 C  OK
+methyl ethyl ether              7.4      8.33  -0.93  WebBook range 6.60 to 10.05 C  OK
+diethyl ether                  34.6     34.55  +0.05  +/- 0.4 K  OK
+methyl propyl ether            38.8     38.65  +0.15  WebBook range 38.55 to 39.05 C  OK
+methyl isopropyl ether         30.8     30.75  +0.05  single value, 0.1 C  OK
+ethyl propyl ether             63.6     63.25  +0.35  WebBook range 63.15 to 63.65 C  OK
+diisopropyl ether              68.5     68.25  +0.25  +/- 0.7 K  OK
+dipropyl ether                 90.1     89.85  +0.25  +/- 1.0 K  OK
+methyl tert-butyl ether        55.2     55.06  +0.14  WebBook range 54.85 to 55.25 C  OK
+dibutyl ether                 142.0    141.85  +0.15  +/- 1.0 K  OK
+tetrahydrofuran                66.0     65.85  +0.15  +/- 1.0 K  OK
+methylamine                    -6.3     -6.35  +0.05  +/- 0.3 K  OK
+ethylamine                     16.6     17.85  -1.25  +/- 2.0 K  OK
+propylamine                    47.8     48.70  -0.90  WebBook range 47.25 to 50.00 C  OK
+isopropylamine                 31.7     32.85  -1.15  +/- 2.0 K  OK
+butylamine                     77.8     77.85  -0.05  +/- 1.0 K  OK
+isobutylamine                  67.8     67.85  -0.05  +/- 1.0 K  OK
+sec-butylamine                 63.0     63.00  +0.00  WebBook range 62.85 to 63.55 C  OK
+tert-butylamine                44.0     44.85  -0.85  +/- 2.0 K  OK
+pentylamine                   104.0    103.05  +0.95  WebBook range 95.00 to 104.45 C  OK
+hexylamine                    132.0    129.75  +2.25  WebBook range 126.00 to 132.75 C  OK
+dimethylamine                   7.4      7.85  -0.45  +/- 1.0 K  OK
+diethylamine                   55.5     55.55  -0.05  +/- 0.8 K  OK
+dipropylamine                 109.3    109.85  -0.55  +/- 2.0 K  OK
+trimethylamine                  2.9      1.85  +1.05  +/- 5.0 K  OK
+triethylamine                  89.3     89.05  +0.25  +/- 0.6 K  OK
+
+largest |difference| = 2.25 C
+
+ALL CHECKS PASSED

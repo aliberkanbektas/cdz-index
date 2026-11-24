@@ -8,7 +8,8 @@
 | `chembl_large_ic50.csv` | 10 851 (10 833 parsed) | 14, 17 | ChEMBL, ligands with reported IC50, single-protein target, standardised; RDKit descriptors as above. Rows whose SMILES the parser rejects are skipped. CC BY-SA 3.0. |
 | `chembl_ecoli_ic50.csv` | 1092 (1082 parsed) | 14 | ChEMBL, *E. coli* targets with reported IC50; RDKit descriptors plus molar volume. CC BY-SA 3.0. |
 | `octane_nist_boiling_points.tsv`, `octane_nist_enthalpies.tsv` | 18 + 18 | 07–09 | Octane-isomer boiling points and standard enthalpies of formation as used in the paper, side by side with the NIST Chemistry WebBook values (retrieved 24 October 2026) and their stated uncertainties. |
-| `aliphatic45.csv` | 45 | 15 | 45 aliphatic alcohols, ethers and amines with normal boiling points (°C), compiled by the author. |
+| `aliphatic45.csv` | 45 | 15, 18 | 45 aliphatic alcohols, ethers and amines with normal boiling points (°C), compiled by the authors. |
+| `aliphatic45_nist_boiling_points.tsv` | 45 | 18 | NIST Chemistry WebBook boiling point (K) for each of the 45 compounds, retrieved 24 November 2026: the recommended average with its uncertainty where available (32 compounds), otherwise the median and range of the individual WebBook measurements as compiled by Cheméo (13 compounds); the source page is given on each row. |
 
 The graph-theoretic results (scripts 01–06, 10–13) need no data: the trees are
 enumerated with `networkx.nonisomorphic_trees`.
