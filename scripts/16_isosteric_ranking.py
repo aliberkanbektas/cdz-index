@@ -7,7 +7,17 @@ isomorphic as unlabelled graphs.  Every degree-based index gives both members
 of such a pair the same value; CDZ need not.  For every isosteric pair that
 CDZ separates and whose measured property differs, the pair counts as
 correctly ordered when the CDZ difference and the property difference have
-the same sign.  A two-sided binomial test against 50 % is reported.
+the same sign.
+
+Pairs are not independent: a molecule with k isosteric partners enters k
+pairs, so a binomial test against 50 % overstates the significance.  The
+p value used in the paper is therefore a permutation test that keeps this
+dependence: within each group of mutually isosteric molecules (refined by the
+family below) the measured values are permuted at random, which leaves the
+group structure and every CDZ value unchanged and destroys only the link
+between CDZ order and property, and the fraction of correctly ordered pairs is
+recomputed.  The p value is two-sided, from 20 000 permutations with a fixed
+seed.  The binomial p value is printed alongside for comparison.
 
 Three nested families of pairs are tested:
   all        every isosteric pair;
@@ -29,6 +39,7 @@ import warnings
 from collections import defaultdict
 
 import networkx as nx
+import numpy as np
 from scipy.stats import binomtest
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
@@ -42,11 +53,13 @@ DATASETS = [
     ("ESOL", "esol_delaney.csv", "smiles", "measured log solubility in mols per litre"),
     ("Lipophilicity", "lipophilicity.csv", "smiles", "exp"),
 ]
-# (dataset, family) -> (pairs, % correct, p) as reported in the paper
+N_PERM = 20000
+SEED = 0
+# (dataset, family) -> (pairs, % correct, binomial p, permutation p) as in the paper
 EXPECTED = {
-    ("ESOL", "all"): (2124, 42.8, 3e-11), ("Lipophilicity", "all"): (1073, 55.7, 2e-4),
-    ("ESOL", "formula"): (50, 54.0, 0.67), ("Lipophilicity", "formula"): (82, 52.4, 0.74),
-    ("ESOL", "heavy"): (81, 56.8, 0.27), ("Lipophilicity", "heavy"): (89, 53.9, 0.53),
+    ("ESOL", "all"): (2124, 42.8, 3e-11, 7.5e-4), ("Lipophilicity", "all"): (1073, 55.7, 2e-4, 0.0035),
+    ("ESOL", "formula"): (50, 54.0, 0.67, 0.69), ("Lipophilicity", "formula"): (82, 52.4, 0.74, 0.68),
+    ("ESOL", "heavy"): (81, 56.8, 0.27, 0.34), ("Lipophilicity", "heavy"): (89, 53.9, 0.53, 0.52),
 }
 
 
@@ -73,6 +86,65 @@ def load(fname, scol, pcol):
                         "heavy": tuple(sorted(G.nodes[v]["Z"] for v in G)),
                         "formula": tuple(sorted(molecular_formula(smi).items()))})
     return out
+
+
+def groups_of(entries, family):
+    """Groups of mutually isosteric molecules, refined by the family key."""
+    buckets = defaultdict(list)
+    for e in entries:
+        buckets[e["hash"]].append(e)
+    out = []
+    for members in buckets.values():
+        iso = []
+        for e in members:
+            for c in iso:
+                if nx.is_isomorphic(nx.Graph(c[0]["G"].edges()), nx.Graph(e["G"].edges())):
+                    c.append(e)
+                    break
+            else:
+                iso.append([e])
+        for c in iso:
+            sub = defaultdict(list)
+            for e in c:
+                sub[e[family] if family in ("formula", "heavy") else 0].append(e)
+            out += [g for g in sub.values() if len(g) > 1]
+    return out
+
+
+def permutation_test(entries, family, rng):
+    """Two-sided within-group permutation p value; also pairs, molecules, groups."""
+    obs_c = obs_n = 0
+    data, mols = [], set()
+    for g in groups_of(entries, family):
+        cz = np.array([e["cdz"] for e in g])
+        y = np.array([e["y"] for e in g])
+        I, J = np.triu_indices(len(g), 1)
+        keep = np.abs(cz[I] - cz[J]) >= 1e-9
+        I, J = I[keep], J[keep]
+        if len(I) == 0:
+            continue
+        sc = np.sign(cz[I] - cz[J])
+        dy = y[I] - y[J]
+        ok = np.abs(dy) >= 1e-9
+        if not ok.any():
+            continue
+        obs_c += int(((sc * dy > 0) & ok).sum())
+        obs_n += int(ok.sum())
+        mols.update((id(g), int(k)) for k in np.concatenate([I[ok], J[ok]]))
+        data.append((y, I, J, sc))
+    corr = np.zeros(N_PERM)
+    tot = np.zeros(N_PERM)
+    for y, I, J, sc in data:
+        yp = y[np.argsort(rng.random((N_PERM, len(y))), axis=1)]
+        dy = yp[:, I] - yp[:, J]
+        ok = np.abs(dy) >= 1e-9
+        corr += ((sc * dy > 0) & ok).sum(1)
+        tot += ok.sum(1)
+    f = corr / tot
+    fo = obs_c / obs_n
+    p = (np.sum(np.abs(f - f.mean()) >= abs(fo - f.mean()) - 1e-12) + 1) / (N_PERM + 1)
+    n_mol = len(mols)
+    return obs_n, n_mol, len(data), p
 
 
 def ranking(entries, family):
@@ -107,18 +179,25 @@ def main():
     print(f"[{'OK' if v else 'FAIL'}] molecular formula: max |MW - ESOL molecular weight| = "
           f"{worst:.3f} over {len(rows)} molecules\n")
 
-    print(f"{'dataset':15s}{'pairs':10s}{'n':>6s}{'correct':>10s}{'p':>11s}")
-    print("-" * 52)
+    rng = np.random.default_rng(SEED)
+    print(f"{'dataset':15s}{'pairs':10s}{'n':>6s}{'mols':>6s}{'groups':>7s}{'correct':>9s}"
+          f"{'p (perm)':>10s}{'p (binom)':>11s}")
+    print("-" * 74)
+
+    def close(p, ep):
+        return abs(p - ep) <= 0.006 if ep >= 0.01 else abs(p - ep) <= 0.2 * ep
+
     for label, fname, scol, pcol in DATASETS:
         entries = load(fname, scol, pcol)
         for family in ("all", "formula", "heavy"):
             c, n, p = ranking(entries, family)
-            en, epct, ep = EXPECTED[(label, family)]
-            p_ok = abs(p - ep) <= 0.006 if ep >= 0.01 else abs(p - ep) <= 0.2 * ep
-            row_ok = n == en and round(100 * c / n, 1) == epct and p_ok
+            n2, n_mol, n_grp, pp = permutation_test(entries, family, rng)
+            en, epct, ep, epp = EXPECTED[(label, family)]
+            pp_ok = abs(pp - epp) <= 0.006 if epp >= 0.01 else abs(pp - epp) <= 0.1 * epp
+            row_ok = n == en == n2 and round(100 * c / n, 1) == epct and close(p, ep) and pp_ok
             ok &= row_ok
-            print(f"{label:15s}{family:10s}{n:6d}{100 * c / n:9.1f}%{p:11.2g}"
-                  f"  {'OK' if row_ok else f'MISMATCH (paper n={en}, {epct}%, p={ep})'}")
+            print(f"{label:15s}{family:10s}{n:6d}{n_mol:6d}{n_grp:7d}{100 * c / n:8.1f}%{pp:10.2g}{p:11.2g}"
+                  f"  {'OK' if row_ok else f'MISMATCH (paper n={en}, {epct}%, p={epp})'}")
     print("\n" + ("ALL CHECKS PASSED" if ok else "SOME CHECKS FAILED"))
     return ok
 

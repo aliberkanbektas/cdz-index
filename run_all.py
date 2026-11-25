@@ -34,7 +34,9 @@ EXPECT = {
     "11_mutual_correlation.py": [r"21/21 entries match", r"CDZ\s+1\.00000 0\.58966 0\.58144"],
     "12_ss_abr.py": [r"17/17 checks passed", r"n=6 SS\s+: CDZ=0\.21191",
                      r"n=13 Ratio: CDZ=0\.35994"],
-    "13_labelled_trees.py": [r"4\s+75\s+90\.7%\s+2\.7%", r"7\s+9894\s+65\.3%\s+0\.1%"],
+    "13_labelled_trees.py": [r"4\s+65\s+95\.4%\s+3\.1%\s+3\.1%", r"7\s+5436\s+64\.8%\s+0\.2%\s+0\.2%",
+                             r"7\s+5436\s+3521\s+9\s+9\s+9\s+8\s+9\s+7\s+9",
+                             r"4\s+75\s+90\.7%\s+2\.7%", r"7\s+9894\s+65\.3%\s+0\.1%"],
 }
 
 

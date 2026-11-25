@@ -50,7 +50,7 @@ required: molecular graphs are read from SMILES by the parser in `cdz_core.py`.
 | Table 10 (C/N/O-labelled trees)                          | `13_labelled_trees.py`              |
 | Table 11 (partial R² beyond size)                        | `14_partial_r2.py`                  |
 | Tables 12–13 and the isosteric triples (45 aliphatics)   | `15_aliphatic45.py`                 |
-| Table 14 (ordering of isosteric pairs)                   | `16_isosteric_ranking.py`           |
+| Table 14 (isosteric pairs, within-group permutation test)| `16_isosteric_ranking.py`           |
 | §6, items 2 and 7 (large IC50 set)                       | `17_large_ic50_limitations.py`      |
 | 45 boiling points checked against NIST (§5.6)           | `18_aliphatic45_vs_nist.py`         |
 

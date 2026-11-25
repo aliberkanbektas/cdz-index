@@ -2,13 +2,15 @@
 Heteroatom-labelled degeneracy: the structural discrimination test.
 =====================================================================
 
-Reproduces the table in the section "Yapısal Ayırt Edicilik" of the paper:
-the fraction of C/N/O-labelled trees that each index can tell apart.
+Reproduces Table 10 of the paper: the fraction of C/N/O-labelled trees that
+each index can tell apart.  The table counts only labellings that respect the
+valences of the three elements (degree at most 4 at C, 3 at N, 2 at O); the
+counts over all labellings, chemically possible or not, are printed as well.
 
 The point of the test
 ----------------------
-Every classical degree-based index (Randić R, GA, ABC, Sombor SO, second
-Zagreb M2, SDD, ...) is a function of the degree sequence alone. So if two
+Every classical vertex-degree-based index (Randić R, GA, ABC, Sombor SO,
+second Zagreb M2, SDD, ...) ignores atom labels.  So if two
 molecules have the same hydrogen-suppressed graph shape but different
 heteroatom placement -- ethanol (C-C-O) and dimethyl ether (C-O-C), say,
 both of which are the 3-vertex path P3 -- every one of those indices assigns
@@ -64,6 +66,11 @@ import networkx as nx
 TOL = 1e-9
 ALPHABET = [6, 7, 8]          # C, N, O
 CARBON = 6
+MAX_DEGREE = {6: 4, 7: 3, 8: 2}   # valence of C, N, O
+
+
+def respects_valence(G):
+    return all(G.degree(v) <= MAX_DEGREE[G.nodes[v]["Z"]] for v in G)
 
 
 # ---------------------------------------------------------------------
@@ -197,28 +204,45 @@ def self_check():
 # Run
 # ---------------------------------------------------------------------
 
-if __name__ == "__main__":
-    self_check()
-
-    print(f"alphabet: C({ALPHABET[0]}), N({ALPHABET[1]}), O({ALPHABET[2]})\n")
+def table(rows, title):
     names = [nm for nm, _ in INDICES]
+    print(title)
     print(f"{'n':>3}{'#structures':>13}  " + "".join(f"{nm:>10}" for nm in names))
     print("-" * (16 + 10 * len(names)))
+    for n, N, degs, _ in rows:
+        print(f"{n:>3}{N:>13}  " + "".join(f"{d:>10.5f}" for d in degs))
+    print(f"\n{'n':>3}{'#structures':>13}{'CDZ':>8}{'CDZ_hom':>9}{'R':>6}{'GA':>5}{'ABC':>5}"
+          f"{'SO':>5}{'M2':>5}{'SDD':>5}   (number of distinct values)")
+    for n, N, _, nd in rows:
+        print(f"{n:>3}{N:>13}{nd[0]:>8}{nd[1]:>9}" + "".join(f"{k:>{w}}" for k, w in zip(nd[2:], (6, 5, 5, 5, 5, 5))))
+    print(f"\n{'n':>3}{'#structures':>13}{'CDZ':>10}{'classical':>12}{'CDZ_hom':>10}{'ratio':>8}")
+    print("-" * 56)
+    for n, N, degs, _ in rows:
+        cdz_pct = 100 * (1 - degs[0])
+        cls_pct = 100 * (1 - degs[2])          # R, which attains the ceiling
+        hom_pct = 100 * (1 - degs[1])
+        print(f"{n:>3}{N:>13}{cdz_pct:>9.1f}%{cls_pct:>11.1f}%{hom_pct:>9.1f}%{cdz_pct/cls_pct:>7.0f}x")
+    print()
 
-    rows = []
+
+def n_distinct(values, tol=TOL):
+    return round(len(values) * (1 - degeneracy(values, tol)))
+
+
+if __name__ == "__main__":
+    self_check()
+    print(f"alphabet: C({ALPHABET[0]}), N({ALPHABET[1]}), O({ALPHABET[2]})\n")
+
+    valid_rows, all_rows, ceilings = [], [], []
     for n in range(4, 8):
         graphs = generate_labelled_trees(n)
-        degs = [degeneracy([f(G) for G in graphs]) for _, f in INDICES]
-        rows.append((n, len(graphs), degs))
-        print(f"{n:>3}{len(graphs):>13}  " + "".join(f"{d:>10.5f}" for d in degs))
+        valid = [G for G in graphs if respects_valence(G)]
+        for target, gs in ((all_rows, graphs), (valid_rows, valid)):
+            vals = [[f(G) for G in gs] for _, f in INDICES]
+            target.append((n, len(gs), [degeneracy(v) for v in vals], [n_distinct(v) for v in vals]))
+        ceilings.append(sum(1 for T in nx.nonisomorphic_trees(n) if max(d for _, d in T.degree()) <= 4))
 
-    print("\nfraction of structures DISTINGUISHED (1 - D), as reported in the paper:\n")
-    print(f"{'n':>3}{'#structures':>13}{'CDZ':>10}{'classical':>12}{'ratio':>8}")
-    print("-" * 46)
-    for n, N, degs in rows:
-        cdz_pct = 100 * (1 - degs[0])
-        cls_pct = 100 * (1 - degs[2])          # R; all classical indices agree
-        print(f"{n:>3}{N:>13}{cdz_pct:>9.1f}%{cls_pct:>11.1f}%{cdz_pct/cls_pct:>7.0f}x")
-
-    print("\nNote: CDZ_hom (column 2) matches the classical indices exactly,")
-    print("confirming the advantage comes from the atomic-number weighting alone.")
+    table(valid_rows, "TABLE 10 -- labellings respecting valence (C <= 4, N <= 3, O <= 2)")
+    print("ceiling for a vertex-degree-based index = number of unlabelled trees with max degree <= 4: "
+          + ", ".join(f"n={n}: {c}" for n, c in zip(range(4, 8), ceilings)) + "\n")
+    table(all_rows, "for comparison -- all C/N/O labellings, valence not imposed")
